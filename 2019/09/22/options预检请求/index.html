@@ -6,15 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2019/9 | 小瓶盖！加油！</title>
+  <title>小瓶盖！加油！</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
+  <meta name="description" content="第一次遇到options请求，看了一些资料和别人的博客才有所了解">
+<meta property="og:type" content="article">
 <meta property="og:title" content="小瓶盖！加油！">
-<meta property="og:url" content="http://yoursite.com/archives/2019/09/index.html">
+<meta property="og:url" content="http://yoursite.com/2019/09/22/options预检请求/index.html">
 <meta property="og:site_name" content="小瓶盖！加油！">
+<meta property="og:description" content="第一次遇到options请求，看了一些资料和别人的博客才有所了解">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-11-05T08:29:47.937Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="小瓶盖！加油！">
+<meta name="twitter:description" content="第一次遇到options请求，看了一些资料和别人的博客才有所了解">
   
     <link rel="alternative" href="/atom.xml" title="小瓶盖！加油！" type="application/atom+xml">
   
@@ -134,118 +138,188 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-options预检请求" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>第一次遇到options请求，看了一些资料和别人的博客才有所了解</p>
+<a id="more"></a>
+
+<h2 id="第一步，先了解了几个概念："><a href="#第一步，先了解了几个概念：" class="headerlink" title="第一步，先了解了几个概念："></a>第一步，先了解了几个概念：</h2><p><strong>CORS</strong>：（Cross-Origin Resource Sharing，跨域资源共享）是一个系统，它由一系列传输的<a href="https://developer.mozilla.org/en-US/docs/Glossary/Header" target="_blank" rel="noopener">HTTP头</a>组成，这些HTTP头决定浏览器是否阻止前端 JavaScript 代码获取跨域请求的响应。（参考MDN术语表）</p>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/Security/Same-origin_policy" target="_blank" rel="noopener">同源安全策略</a> 默认阻止“跨域”获取资源。但是 CORS 给了web服务器这样的权限，即服务器可以选择，允许跨域请求访问到它们的资源。</p>
+<p><strong>简单请求和非简单请求</strong>：</p>
+<p>浏览器将CORS请求分成两类：简单请求 <code>simple request</code> 和非简单请求<code>not-so-simple request</code>。</p>
+<p>满足一下条件就是简单请求：</p>
+<blockquote>
+<p>（1) 请求方法是以下三种方法之一：<br>   HEAD<br>   GET<br>   POST<br>（2）HTTP的头信息不超出以下几种字段：<br>   Accept<br>   Accept-Language<br>   Content-Language<br>   Last-Event-ID<br>   Content-Type：只限于三个值application/x-www-form-urlencoded、multipart/form-data、text/plain</p>
+</blockquote>
+<p>不满足以上条件的就是非简单请求。</p>
+<p><strong>options请求</strong>：(参考MDN)</p>
+<p>OPTIONS 方法可以用来检测服务器支持哪些 HTTP 方法：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -X OPTIONS http://example.org -i</span><br></pre></td></tr></table></figure>
+
+<p><strong>CORS 中的预检请求</strong>：(参考MDN)</p>
+<blockquote>
+<p>在 <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Access_control_CORS" target="_blank" rel="noopener">CORS</a> 中，可以使用 OPTIONS 方法发起一个预检请求，以检测实际请求是否可以被服务器所接受。预检请求报文中的 <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Access-Control-Request-Method" target="_blank" rel="noopener"><code>Access-Control-Request-Method</code></a> 首部字段告知服务器实际请求所使用的 HTTP 方法；<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Access-Control-Request-Headers" target="_blank" rel="noopener"><code>Access-Control-Request-Headers</code></a> 首部字段告知服务器实际请求所携带的自定义首部字段。服务器基于从预检请求获得的信息来判断，是否接受接下来的实际请求。</p>
+</blockquote>
+<h2 id="第二步，产生options请求"><a href="#第二步，产生options请求" class="headerlink" title="第二步，产生options请求"></a>第二步，产生options请求</h2><p>MDN的<a href="https://link.juejin.im?target=https%3A%2F%2Fdeveloper.mozilla.org%2Fzh-CN%2Fdocs%2FWeb%2FHTTP%2FAccess_control_CORS" target="_blank" rel="noopener">CORS</a>一文中提到：</p>
+<blockquote>
+<p>规范要求，对那些可能对服务器数据产生副作用的 HTTP 请求方法（特别是 GET 以外的 HTTP 请求，或者搭配某些 MIME 类型的 POST 请求），浏览器必须首先使用 OPTIONS 方法发起一个预检请求（preflight request），从而获知服务端是否允许该跨域请求。</p>
+</blockquote>
+<p>所以这个跨域请求触发了浏览器自动发起OPTIONS请求，看看此次跨域请求具体触发了哪些条件。</p>
+<p>目前就我了解的是，若是<strong>非简单请求</strong>，就会产生options请求。（现在还是前端小菜瓜，以后遇到不同情况再补充）</p>
+<h2 id="第三步，避免触发options请求"><a href="#第三步，避免触发options请求" class="headerlink" title="第三步，避免触发options请求"></a>第三步，避免触发options请求</h2><p>（目前只知道一种-_-）</p>
+<p>将数据调整为字符串数据，引起content-type变为www键值对。（因为一开始数据是对象，所以content-type是application/json）</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.$axios.post(<span class="string">'postcomment/300'</span>,</span><br><span class="line">	<span class="string">'content=今天又是收获满满的一天'</span></span><br><span class="line">    <span class="comment">//注释部分数据是对象方式，content-type是application/json</span></span><br><span class="line">    <span class="comment">//&#123;</span></span><br><span class="line">    <span class="comment">//  content:'传智27期，再次霸气的一批'</span></span><br><span class="line">    <span class="comment">// &#125;</span></span><br><span class="line">    )</span><br></pre></td></tr></table></figure>
+
+<p>参考链接:</p>
+<p><a href="https://zhuanlan.zhihu.com/p/46405073" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/46405073</a></p>
+<p><a href="https://blog.csdn.net/gu_wen_jie/article/details/84172410" target="_blank" rel="noopener">https://blog.csdn.net/gu_wen_jie/article/details/84172410</a></p>
+<p><a href="https://juejin.im/post/5cb3eedcf265da038f7734c4" target="_blank" rel="noopener">https://juejin.im/post/5cb3eedcf265da038f7734c4</a></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/alipay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/09/23/hexo初搭建/" class="archive-article-date">
-  	<time datetime="2019-09-23T13:23:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-23</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/23/hexo初搭建/">hexo基本安装和操作</a>
-    </h1>
-  
+      
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/09/22/options预检请求/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/09/23/hello-world/" class="archive-article-date">
-  	<time datetime="2019-09-23T13:16:26.883Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-23</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2019/09/23/hello-world/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Hello World
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/09/01/网页制作技巧总结/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title"></div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/23/hello-world/">Hello World</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/09/22/options预检请求/" class="archive-article-date">
-  	<time datetime="2019-09-22T07:10:26.631Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-22</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/09/01/网页制作技巧总结/" class="archive-article-date">
-  	<time datetime="2019-09-01T11:58:34.538Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-01</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
+
+  
 
 
           </div>
@@ -268,8 +342,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
