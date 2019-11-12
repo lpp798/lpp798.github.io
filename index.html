@@ -142,6 +142,283 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-ife笔记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/12/ife笔记/">ife笔记</a>
+    </h1>
+  
+
+        
+        <a href="/2019/11/12/ife笔记/" class="archive-article-date">
+  	<time datetime="2019-11-12T01:54:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-12</time>
+</a>
+        <!-- 开始添加字数统计-->
+        
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">857字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">3分</span>
+      </span>
+    </span>
+</div>
+          
+        <!-- 添加完成 -->
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="百度css点击按钮切换样式"><a href="#百度css点击按钮切换样式" class="headerlink" title="百度css点击按钮切换样式"></a>百度css点击按钮切换样式</h1><h3 id="1-交集选择器"><a href="#1-交集选择器" class="headerlink" title="1.交集选择器"></a>1.交集选择器</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span><span class="selector-class">.red</span>&#123;<span class="comment">/*交集选择器 即是 div 又叫red 满足条件 才能使用*/</span></span><br><span class="line">    ....;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-兼容前缀"><a href="#2-兼容前缀" class="headerlink" title="2.兼容前缀"></a>2.兼容前缀</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-webkit-/*Safari, 谷歌*/</span><br><span class="line">-moz-/*火狐*/</span><br><span class="line">-o-/* Opera*/</span><br><span class="line">-ms-/*IE*/</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-添加点击事件的兼容写法"><a href="#3-添加点击事件的兼容写法" class="headerlink" title="3.添加点击事件的兼容写法"></a>3.添加点击事件的兼容写法</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(<span class="built_in">document</span>.addEventListener)&#123;</span><br><span class="line">    btn.addEventListener(<span class="string">"click"</span>,handler);</span><br><span class="line">&#125;<span class="keyword">else</span> <span class="keyword">if</span>(<span class="built_in">document</span>.attachEvent)&#123;</span><br><span class="line">    btn.attachEvent(<span class="string">"click"</span>,handler);</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    btn.onclick = handler;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="初步接触css2D变形"><a href="#初步接触css2D变形" class="headerlink" title="初步接触css2D变形"></a>初步接触css2D变形</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">/* 变形 */skew(30deg)</span><br><span class="line">/* 压缩或拉伸 */scale(0.5,0.5)</span><br><span class="line">/* 旋转 */rotate(45deg)</span><br><span class="line">/* 位移 */translate(10px,20px)</span><br><span class="line">由于这些都是transform的内容，若要有多个改变则：</span><br><span class="line">transform: skewX(30deg) scaleX(0.5) rotate(45deg) translate(10px,20px);</span><br><span class="line">注意：</span><br><span class="line">由于transform是CSS3的新特性，所有需要注意兼容性问题。</span><br></pre></td></tr></table></figure>
+
+<h1 id="CSStransition和CSStransform配合制作动画（猫咪笑了）"><a href="#CSStransition和CSStransform配合制作动画（猫咪笑了）" class="headerlink" title="CSStransition和CSStransform配合制作动画（猫咪笑了）"></a>CSStransition和CSStransform配合制作动画（猫咪笑了）</h1><p>这里由于已经给了大概的样式和布局，只需要修改动画贾孝国就可以了，所以用到的东西跟上面的练习一样，就不补充了。</p>
+<h1 id="3D空间的卡片翻转动效"><a href="#3D空间的卡片翻转动效" class="headerlink" title="3D空间的卡片翻转动效"></a>3D空间的卡片翻转动效</h1><p>这个小练习看了很久，要来好好说道说道，说说我踩过的坑：</p>
+<h3 id="1-结构："><a href="#1-结构：" class="headerlink" title="1. 结构："></a>1. 结构：</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"up"</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"img/正面.jpg"</span> <span class="attr">alt</span>=<span class="string">""</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"down"</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"img/反面.jpg"</span> <span class="attr">alt</span>=<span class="string">""</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>结构一定要这样写，一开始我并没有将两个img分别放到两个div中，有可能是导致<code>backface-visibility:hidden;</code>失效的原因</p>
+<h3 id="2-backface-visibility："><a href="#2-backface-visibility：" class="headerlink" title="2. backface-visibility："></a>2. backface-visibility：</h3><p>这个小可爱，是谷歌不支持的！原本以为谷歌是万能的我，在调试的时候并没有写兼容性代码，但是这个效果死活出不来，一查发现这个属性室友IE和火狐支持。。。。。。</p>
+<p>用这个属性的时候要注意一下。</p>
+<p>但是这个属性还是很好用的，官宣参考一下：</p>
+<blockquote>
+<p>隐藏被旋转的 div 元素的背面</p>
+</blockquote>
+<p>原谅我一开始的眼瞎-_-，人家写着div，div，div！！！</p>
+<h3 id="3-perspective："><a href="#3-perspective：" class="headerlink" title="3. perspective："></a>3. perspective：</h3><p>官方话：</p>
+<blockquote>
+<p>perspective 属性定义 3D 元素距视图的距离，以像素计。该属性允许您改变 3D 元素查看 3D 元素的视图。</p>
+<p>当为元素定义 perspective 属性时，其<strong>子元素</strong>会获得透视效果，而不是元素本身。</p>
+<p><strong>注释：perspective 属性只影响 3D 转换元素。</strong></p>
+<p>注意是 <strong>看</strong> 子元素，子元素，子元素！！！</p>
+</blockquote>
+<p><strong>还有这个属性目前是没有浏览器支持的哟，用的时候记得加上前缀哟</strong>，还好这次眼尖，没掉坑，掉下去不知道能不能爬上来了。</p>
+<h3 id="4-旋转的方向"><a href="#4-旋转的方向" class="headerlink" title="4. 旋转的方向"></a>4. 旋转的方向</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> <span class="selector-class">.down</span>&#123;</span><br><span class="line">    <span class="attribute">transform</span>: <span class="built_in">rotateY</span>(180deg);</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.container</span><span class="selector-pseudo">:hover</span>&gt;<span class="selector-class">.up</span>&#123;</span><br><span class="line">    <span class="attribute">transform</span>: <span class="built_in">rotateY</span>(-180deg);</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.container</span><span class="selector-pseudo">:hover</span>&gt;<span class="selector-class">.down</span>&#123;</span><br><span class="line">    <span class="attribute">transform</span>: <span class="built_in">rotateY</span>(0deg);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果这个代码段中，第二个设置成<code>transform: rotateY(180deg);</code>的话，卡片转起来会比较奇怪。。。。。。</p>
+<h1 id="纯CSS制作绕中轴旋转的立方体"><a href="#纯CSS制作绕中轴旋转的立方体" class="headerlink" title="纯CSS制作绕中轴旋转的立方体"></a>纯CSS制作绕中轴旋转的立方体</h1><p>首先介绍几个重要的，难理解的属性：</p>
+<h3 id="1-transform-style"><a href="#1-transform-style" class="headerlink" title="1. transform-style"></a>1. transform-style</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">transform-style:flat|preserve-3d;</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>flat</td>
+<td>子元素将不保留其 3D 位置。（默认值）</td>
+</tr>
+<tr>
+<td>preserve-3d</td>
+<td>子元素将保留其 3D 位置。</td>
+</tr>
+</tbody></table>
+<h3 id="2-transform属性中的translateZ的值："><a href="#2-transform属性中的translateZ的值：" class="headerlink" title="2. transform属性中的translateZ的值："></a>2. transform属性中的translateZ的值：</h3><p>使用示例：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">transform</span>: <span class="selector-tag">rotateX</span>(90<span class="selector-tag">deg</span>) <span class="selector-tag">translateZ</span>(200<span class="selector-tag">px</span>);</span><br></pre></td></tr></table></figure>
+
+<p>先在中点(原来的位置)进行旋转，随后分别<strong>向各自变化后的Z方向</strong>推进指定px；</p>
+<p>按这个意思是面旋转了之后，它是z轴也会跟着旋转，这样就可以将各个面向各个方向（z轴正方向）推开，就有了立方体的各个面。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/11/12/ife笔记/">仔细看看^^ >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-webpack使用记录" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/12/webpack使用记录/">webpack使用记录</a>
+    </h1>
+  
+
+        
+        <a href="/2019/11/12/webpack使用记录/" class="archive-article-date">
+  	<time datetime="2019-11-12T01:52:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-12</time>
+</a>
+        <!-- 开始添加字数统计-->
+        
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">709字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">3分</span>
+      </span>
+    </span>
+</div>
+          
+        <!-- 添加完成 -->
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="第一步：安装"><a href="#第一步：安装" class="headerlink" title="第一步：安装"></a>第一步：安装</h2><p>创建项目文件夹，进入该文件夹，初始化npm，生成<code>package.json</code>文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm init -y</span><br></pre></td></tr></table></figure>
+
+<p>在本地安装webpack、webpack-cli（此工具用于在命令行中运行webpack）</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install webpack webpack-cli --save-dev -D</span><br></pre></td></tr></table></figure>
+
+<p>要在 <code>index.js</code> 中打包 <code>lodash</code> 依赖，我们需要在本地安装 library：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save lodash</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>在安装一个要打包到生产环境的安装包时，你应该使用 <code>npm install --save</code>，如果你在安装一个用于开发环境的安装包（例如，linter, 测试库等），你应该使用 <code>npm install --save-dev</code>。请在 <a href="https://docs.npmjs.com/cli/install" target="_blank" rel="noopener">npm 文档</a> 中查找更多信息。 </p>
+</blockquote>
+<p>假想，现在我们正在下载 CSS，但是我们的背景和图标这些图片，要如何处理呢？使用 <a href="https://www.webpackjs.com/loaders/file-loader" target="_blank" rel="noopener">file-loader</a>，我们可以轻松地将这些内容混合到 CSS 中，还可以用于字体加载，file-loader可以加载任何类型的文件：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save-dev file-loader</span><br></pre></td></tr></table></figure>
+
+<p>类似于 NodeJS，JSON 支持实际上是内置的，也就是说 <code>import Data from &#39;./data.json&#39;</code> 默认将正常运行。要导入 CSV、TSV 和 XML，你可以使用 <a href="https://github.com/theplatapi/csv-loader" target="_blank" rel="noopener">csv-loader</a> 和 <a href="https://github.com/gisikw/xml-loader" target="_blank" rel="noopener">xml-loader</a>。让我们处理这三类文件：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save-dev csv-loader xml-loader</span><br></pre></td></tr></table></figure>
+
+<p>设定 HtmlWebpackPlugin，安装插件：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save-dev html-webpack-plugin</span><br></pre></td></tr></table></figure>
+
+<p>在每次构建前清理 <code>/dist</code> 文件夹，是比较推荐的做法，因此只会生成用到的文件。让我们完成这个需求。<a href="https://www.npmjs.com/package/clean-webpack-plugin" target="_blank" rel="noopener"><code>clean-webpack-plugin</code></a> 是一个比较普及的管理插件，让我们安装和配置下。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install clean-webpack-plugin --save-dev</span><br></pre></td></tr></table></figure>
+
+<p>这里按照中文官网的写法报错：<code>CleanWebpackPlugin is not a constructor</code></p>
+<p>正确写法（原因不明）：（英文官网正确写法）</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123; CleanWebpackPlugin &#125; = <span class="built_in">require</span>(<span class="string">"clean-webpack-plugin"</span>);</span><br><span class="line">...</span><br><span class="line">plugins: [</span><br><span class="line">    <span class="keyword">new</span> CleanWebpackPlugin()</span><br><span class="line">]</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<h2 id="第二步：webpack配置"><a href="#第二步：webpack配置" class="headerlink" title="第二步：webpack配置"></a>第二步：webpack配置</h2><h3 id="mode"><a href="#mode" class="headerlink" title="mode:"></a>mode:</h3><p>用来指定构建模式</p>
+<p>开发阶段设置为 development</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mode: &apos;development&apos;</span><br></pre></td></tr></table></figure>
+
+<p>还有一个值为production，会将代码压缩</p>
+<h2 id="选择开发工具："><a href="#选择开发工具：" class="headerlink" title="选择开发工具："></a>选择开发工具：</h2><h3 id="1-观察模式：webpack-–watch"><a href="#1-观察模式：webpack-–watch" class="headerlink" title="1. 观察模式：webpack –watch"></a>1. 观察模式：webpack –watch</h3><p>唯一的缺点是，为了看到修改后的实际效果，你需要刷新浏览器。</p>
+<h3 id="2-webpack-dev-server-gt-最常用"><a href="#2-webpack-dev-server-gt-最常用" class="headerlink" title="2.webpack-dev-server-&gt;最常用"></a>2.webpack-dev-server-&gt;最常用</h3><h4 id="安装："><a href="#安装：" class="headerlink" title="安装："></a>安装：</h4><p><code>webpack-dev-server</code> 为我们提供了一个简单的 web 服务器，并且能够<strong>实时</strong>重新加载(<strong>live reloading</strong>)</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save-dev webpack-dev-server</span><br></pre></td></tr></table></figure>
+
+<h4 id="修改配置文件："><a href="#修改配置文件：" class="headerlink" title="修改配置文件："></a>修改配置文件：</h4><p>修改配置文件，告诉开发服务器(dev server)，在哪里查找文件：</p>
+<p>webpack.config.js:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">moudle.exports = &#123;</span><br><span class="line">    ...,</span><br><span class="line">    devServer: &#123;</span><br><span class="line">    	contentBase: <span class="string">'./dist'</span></span><br><span class="line">	&#125;,</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="添加一个script脚本："><a href="#添加一个script脚本：" class="headerlink" title="添加一个script脚本："></a>添加一个script脚本：</h4><p>package.json:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">"start": "webpack-dev-server --open"</span><br></pre></td></tr></table></figure>
+
+<h4 id="运行："><a href="#运行：" class="headerlink" title="运行："></a>运行：</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm start</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-webpack-dev-middleware"><a href="#3-webpack-dev-middleware" class="headerlink" title="3.webpack-dev-middleware"></a>3.webpack-dev-middleware</h3><h2 id="模式热替换："><a href="#模式热替换：" class="headerlink" title="模式热替换："></a>模式热替换：</h2><h3 id="1-启用HMR"><a href="#1-启用HMR" class="headerlink" title="1. 启用HMR"></a>1. 启用HMR</h3><h2 id="babel-loader"><a href="#babel-loader" class="headerlink" title="babel-loader"></a>babel-loader</h2><h3 id="安装：-1"><a href="#安装：-1" class="headerlink" title="安装："></a>安装：</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install babel-loader@8.0.0-beta.0 @babel/core @babel/preset-env</span><br></pre></td></tr></table></figure>
+
+<h3 id="配置webpack对象："><a href="#配置webpack对象：" class="headerlink" title="配置webpack对象："></a>配置webpack对象：</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>: &#123;</span><br><span class="line">  rules: [</span><br><span class="line">    &#123;</span><br><span class="line">      test: <span class="regexp">/\.js$/</span>,</span><br><span class="line">      exclude: <span class="regexp">/(node_modules|bower_components)/</span>,</span><br><span class="line">      use: &#123;</span><br><span class="line">        loader: <span class="string">'babel-loader'</span>,</span><br><span class="line">        options: &#123;</span><br><span class="line">          presets: [<span class="string">'@babel/preset-env'</span>]</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="支持CSS文件："><a href="#支持CSS文件：" class="headerlink" title="支持CSS文件："></a>支持CSS文件：</h2><h3 id="安装：-2"><a href="#安装：-2" class="headerlink" title="安装："></a>安装：</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save-dev style-loader css-loader</span><br></pre></td></tr></table></figure>
+
+<h3 id="配置webpack对象：-1"><a href="#配置webpack对象：-1" class="headerlink" title="配置webpack对象："></a>配置webpack对象：</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>: &#123;</span><br><span class="line">    rules: [</span><br><span class="line">       &#123;</span><br><span class="line">         test: <span class="regexp">/\.css$/</span>,</span><br><span class="line">         use: [</span><br><span class="line">           <span class="string">'style-loader'</span>,</span><br><span class="line">           <span class="string">'css-loader'</span></span><br><span class="line">         ]</span><br><span class="line">       &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/11/12/webpack使用记录/">仔细看看^^ >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-gitHub使用记录" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
